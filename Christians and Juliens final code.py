@@ -32,11 +32,6 @@ def initializeRandomSeed():
 initializeRandomSeed()
 
 
-def play_vexcode_sound(sound_name):
-    # Helper to make playing sounds from the V5 in VEXcode easier and
-    # keeps the code cleaner by making it clear what is happening.
-    print("VEXPlaySound:" + sound_name)
-    wait(5, MSEC)
 
 # add a small delay to make sure we don't print in the middle of the REPL header
 wait(200, MSEC)
