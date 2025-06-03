@@ -1,45 +1,3 @@
-#region VEXcode Generated Robot Configuration
-from vex import *
-import urandom
-
-# Brain should be defined by default
-brain=Brain()
-
-# Robot configuration code
-left_drive_smart = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
-right_drive_smart = Motor(Ports.PORT10, GearSetting.RATIO_18_1, True)
-drivetrain = DriveTrain(left_drive_smart, right_drive_smart, 319.19, 295, 40, MM, 1)
-claw_motor = Motor(Ports.PORT11, GearSetting.RATIO_18_1, False)
-arm_motor = Motor(Ports.PORT20, GearSetting.RATIO_18_1, False)
-# AI Vision Color Descriptions
-ai_vision_5__BlueBox = Colordesc(1, 25, 77, 108, 24, 0.25)
-ai_vision_5__GreenBall = Colordesc(2, 72, 190, 72, 24, 0.28)
-# AI Vision Code Descriptions
-ai_vision_5 = AiVision(Ports.PORT5, ai_vision_5__BlueBox, ai_vision_5__GreenBall)
-
-
-# wait for rotation sensor to fully initialize
-wait(30, MSEC)
-
-
-# Make random actually random
-def initializeRandomSeed():
-    wait(100, MSEC)
-    random = brain.battery.voltage(MV) + brain.battery.current(CurrentUnits.AMP) * 100 + brain.timer.system_high_res()
-    urandom.seed(int(random))
-      
-# Set random seed 
-initializeRandomSeed()
-
-
-
-# add a small delay to make sure we don't print in the middle of the REPL header
-wait(200, MSEC)
-# clear the console to make sure we don't have the REPL in the console
-print("\033[2J")
-
-#endregion VEXcode Generated Robot Configuration
-
 from vex import *
 import urandom
 
@@ -57,19 +15,7 @@ ai_vision_5 = AiVision(Ports.PORT5, ai_vision_5__BlueBox, ai_vision_5__GreenBall
 
 wait(30, MSEC)
 
-def initializeRandomSeed():
-    wait(100, MSEC)
-    random = brain.battery.voltage(MV) + brain.battery.current(CurrentUnits.AMP) * 100 + brain.timer.system_high_res()
-    urandom.seed(int(random))
 
-initializeRandomSeed()
-
-def play_vexcode_sound(sound_name):
-    print("VEXPlaySound:" + sound_name)
-    wait(5, MSEC)
-
-wait(200, MSEC)
-print("\033[2J")
 
 # Set speeds
 drivetrain.set_drive_velocity(30, PERCENT)
